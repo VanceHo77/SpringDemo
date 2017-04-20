@@ -28,21 +28,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
-	/**
-	 * µø¹Ï¸ÑªR¾¹
-	 *
-	 * @return
-	 */
 	@Bean
 	public ViewResolver viewResolver() {
-		// °ê»Ú¤Æµø¹Ï¸ÑªR¾¹¡A¨ã¦³UrlBasedViewResolver¯S©Ê¡]§âµø¹Ï¦WÂà´«URL¡^¡A¥¦¤ä«ùInternalResourceView¡AJstlView
-		// ©MTilesViewµ¥µø¹Ï¡C
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		// ³]¸m³o­Óµø¹Ï¸ÑªR¾¹³Ð«Øµø¹Ïªºclass
+
 		viewResolver.setViewClass(InternalResourceView.class);
-		// «eºó
+		// ï¿½eï¿½ï¿½
 		viewResolver.setPrefix("/WEB-INF/views/");
-		// «áºó
+		// ï¿½ï¿½ï¿½
 		viewResolver.setSuffix(".jsp");
 
 		return viewResolver;
