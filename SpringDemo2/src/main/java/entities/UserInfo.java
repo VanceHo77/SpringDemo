@@ -1,15 +1,8 @@
 package entities;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class UserInfo {
 
-	@NotNull
-	@Size(min = 5, max = 10, message = "{Size.error}")
 	private String account;
-	@NotNull
-	@Size(min = 5, max = 10)
 	private String password;
 
 	public UserInfo() {

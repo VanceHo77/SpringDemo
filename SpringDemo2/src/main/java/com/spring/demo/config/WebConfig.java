@@ -33,9 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 
 		viewResolver.setViewClass(InternalResourceView.class);
-		// �e��
 		viewResolver.setPrefix("/WEB-INF/views/");
-		// ���
 		viewResolver.setSuffix(".jsp");
 
 		return viewResolver;
@@ -44,7 +42,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean(name = "messageSource")
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource bean = new ReloadableResourceBundleMessageSource();
-		bean.setBasename("/WEB-INF/ValidationMessages");
+		bean.setBasename("/WEB-INF/messages");
 		bean.setDefaultEncoding("UTF-8");
 		return bean;
 	}
