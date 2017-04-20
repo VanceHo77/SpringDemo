@@ -13,7 +13,6 @@ public class UserInfo {
 	private String password;
 
 	public UserInfo() {
-
 	}
 
 	public UserInfo(String account, String password) {
