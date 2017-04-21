@@ -17,6 +17,9 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.spring.demo.*")
@@ -51,11 +54,13 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	public TemplateEngine templateEngine() {
 		SpringTemplateEngine engine = new SpringTemplateEngine();
 		engine.setEnableSpringELCompiler(true);
+		engine.addDialect(new LayoutDialect(new GroupingStrategy()));
 		engine.setTemplateResolver(templateResolver());
 		return engine;
 	}
 
-	private ITemplateResolver templateResolver() {
+	@Bean
+	public ITemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setApplicationContext(applicationContext);
 		resolver.setPrefix("/WEB-INF/views/");
