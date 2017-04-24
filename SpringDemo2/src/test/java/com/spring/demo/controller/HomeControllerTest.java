@@ -48,10 +48,8 @@ public class HomeControllerTest {
 	public void testHomePage() throws Exception {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("home"));
 		this.mockMvc.perform(get("/homepage")).andExpect(status().isOk()).andExpect(view().name("home"));
-		// ����model���O�_�t��Demo����
 		this.mockMvc.perform(get("/")).andExpect(view().name("home")).andExpect(
 				MockMvcResultMatchers.model().attribute("demo", Matchers.hasProperty("id", is(demo.getId()))));
-		// ����model���O�_�t��List<Demo>
 		this.mockMvc.perform(get("/")).andExpect(view().name("home"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(9)));
 	}

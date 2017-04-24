@@ -50,7 +50,7 @@ public class RegisterControllerTest {
 				.andExpect(MockMvcResultMatchers.model().attribute("userInfo",
 						Matchers.hasProperty("account", is(new UserInfo().getAccount()))));
 
-		// �������submit�ާ@
+		// mock submit
 		UserInfo unSavedReg = new UserInfo("Vance", "pwd123");
 		UserInfo savedReg = new UserInfo("Vance", "pwd123");
 		when(rpoImpl.save(unSavedReg)).thenReturn(savedReg.getAccount());
@@ -58,7 +58,7 @@ public class RegisterControllerTest {
 		this.mockMvc.perform(post("/register").param("account", "Vance").param("password", "pwd123"))
 				.andExpect(status().is(302)).andExpect(redirectedUrl("/welcome/Vance"));
 
-		// ����save�����p�A�|�X�������ѡ�
+		// 會出錯，先註解
 		// verify(rpoImpl, atLeastOnce()).save(unSavedReg);
 
 	}

@@ -45,13 +45,13 @@ public class ShowDemoControllerTest {
 
 	@Test
 	public void testShowDemo() throws Exception {
-		// ����model���O�_�t��List<Demo>
+		// Check List<Demo> has size 9
 		this.mockMvc.perform(get("/")).andExpect(view().name("home"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(9)));
-		// ����Get�d�߰ѼơA�ϥάd�߰ѼơA�D���V�귽
+		// Not Faced resource
 		this.mockMvc.perform(get("/show?start=0&size=3")).andExpect(view().name("showDemo"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(3)));
-		// ����Get�d�߰ѼơA�ϥθ��|�ѼơA���V�귽
+		// Faced resource
 		this.mockMvc.perform(get("/show/0/3")).andExpect(view().name("showDemo"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(3)));
 	}
