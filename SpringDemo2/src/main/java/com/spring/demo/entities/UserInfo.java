@@ -1,9 +1,12 @@
-package entities;
+package com.spring.demo.entities;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class UserInfo {
 
 	private String account;
 	private String password;
+	private MultipartFile userImg;
 
 	public UserInfo() {
 	}
@@ -28,6 +31,14 @@ public class UserInfo {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public MultipartFile getUserImg() {
+		return userImg;
+	}
+
+	public void setUserImg(MultipartFile userImg) {
+		this.userImg = userImg;
 	}
 
 }

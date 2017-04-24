@@ -23,9 +23,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.spring.demo.config.WebConfig;
+import com.spring.demo.entities.UserInfo;
 import com.spring.demo.service.RegisterRepositoryServiceImpl;
-
-import entities.UserInfo;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -51,7 +50,7 @@ public class RegisterControllerTest {
 				.andExpect(MockMvcResultMatchers.model().attribute("userInfo",
 						Matchers.hasProperty("account", is(new UserInfo().getAccount()))));
 
-		// ¼ÒÀÀªí³æsubmit¾Þ§@
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½submitï¿½Þ§@
 		UserInfo unSavedReg = new UserInfo("Vance", "pwd123");
 		UserInfo savedReg = new UserInfo("Vance", "pwd123");
 		when(rpoImpl.save(unSavedReg)).thenReturn(savedReg.getAccount());
@@ -59,7 +58,7 @@ public class RegisterControllerTest {
 		this.mockMvc.perform(post("/register").param("account", "Vance").param("password", "pwd123"))
 				.andExpect(status().is(302)).andExpect(redirectedUrl("/welcome/Vance"));
 
-		// ÀËÅçsaveªº±¡ªp¡A·|¥X¿ù¥ýµù¸Ñ¡õ
+		// ï¿½ï¿½ï¿½ï¿½saveï¿½ï¿½ï¿½ï¿½ï¿½pï¿½Aï¿½|ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½
 		// verify(rpoImpl, atLeastOnce()).save(unSavedReg);
 
 	}

@@ -20,9 +20,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.spring.demo.config.WebConfig;
+import com.spring.demo.entities.Demo;
 import com.spring.demo.service.DemoRepositoryServiceImpl;
-
-import entities.Demo;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -49,10 +48,10 @@ public class HomeControllerTest {
 	public void testHomePage() throws Exception {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("home"));
 		this.mockMvc.perform(get("/homepage")).andExpect(status().isOk()).andExpect(view().name("home"));
-		// ´ú¸Õmodel¤¤¬O§_§t¦³Demoª«¥ó
+		// ï¿½ï¿½ï¿½ï¿½modelï¿½ï¿½ï¿½Oï¿½_ï¿½tï¿½ï¿½Demoï¿½ï¿½ï¿½ï¿½
 		this.mockMvc.perform(get("/")).andExpect(view().name("home")).andExpect(
 				MockMvcResultMatchers.model().attribute("demo", Matchers.hasProperty("id", is(demo.getId()))));
-		// ´ú¸Õmodel¤¤¬O§_§t¦³List<Demo>
+		// ï¿½ï¿½ï¿½ï¿½modelï¿½ï¿½ï¿½Oï¿½_ï¿½tï¿½ï¿½List<Demo>
 		this.mockMvc.perform(get("/")).andExpect(view().name("home"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(9)));
 	}

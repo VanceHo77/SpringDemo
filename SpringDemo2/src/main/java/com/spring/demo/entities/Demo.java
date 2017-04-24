@@ -1,4 +1,4 @@
-package entities;
+package com.spring.demo.entities;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

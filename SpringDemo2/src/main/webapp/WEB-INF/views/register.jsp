@@ -20,7 +20,7 @@ input.error {
 <body>
 	<h2>Register:</h2>
 	<div>
-		<sf:form method="post" commandName="userInfo">
+		<sf:form method="post" commandName="userInfo" enctype="multipart/form-data">
 			<sf:errors path="*" cssClass="error" element="div" />
 			帳號：
 			<sf:input type="text" path="account"  cssErrorClass="error"/>
@@ -28,6 +28,8 @@ input.error {
 			密碼：
 			<sf:input type="text" path="password"  cssErrorClass="error"/>
 			<br />
+			<br />
+			照片：<sf:input type="file" path="userImg"/>
 			<input type="submit" value="register" />
 		</sf:form>
 	</div>

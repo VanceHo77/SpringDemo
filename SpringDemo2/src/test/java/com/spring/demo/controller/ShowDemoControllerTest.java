@@ -20,9 +20,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.spring.demo.config.WebConfig;
+import com.spring.demo.entities.Demo;
 import com.spring.demo.service.DemoRepositoryServiceImpl;
-
-import entities.Demo;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,13 +45,13 @@ public class ShowDemoControllerTest {
 
 	@Test
 	public void testShowDemo() throws Exception {
-		// ´ú¸Õmodel¤¤¬O§_§t¦³List<Demo>
+		// ï¿½ï¿½ï¿½ï¿½modelï¿½ï¿½ï¿½Oï¿½_ï¿½tï¿½ï¿½List<Demo>
 		this.mockMvc.perform(get("/")).andExpect(view().name("home"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(9)));
-		// ´ú¸ÕGet¬d¸ß°Ñ¼Æ¡A¨Ï¥Î¬d¸ß°Ñ¼Æ¡A«D­±¦V¸ê·½
+		// ï¿½ï¿½ï¿½ï¿½Getï¿½dï¿½ß°Ñ¼Æ¡Aï¿½Ï¥Î¬dï¿½ß°Ñ¼Æ¡Aï¿½Dï¿½ï¿½ï¿½Vï¿½ê·½
 		this.mockMvc.perform(get("/show?start=0&size=3")).andExpect(view().name("showDemo"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(3)));
-		// ´ú¸ÕGet¬d¸ß°Ñ¼Æ¡A¨Ï¥Î¸ô®|°Ñ¼Æ¡A­±¦V¸ê·½
+		// ï¿½ï¿½ï¿½ï¿½Getï¿½dï¿½ß°Ñ¼Æ¡Aï¿½Ï¥Î¸ï¿½ï¿½|ï¿½Ñ¼Æ¡Aï¿½ï¿½ï¿½Vï¿½ê·½
 		this.mockMvc.perform(get("/show/0/3")).andExpect(view().name("showDemo"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(3)));
 	}

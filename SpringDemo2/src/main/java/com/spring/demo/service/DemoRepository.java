@@ -2,7 +2,7 @@ package com.spring.demo.service;
 
 import java.util.List;
 
-import entities.Demo;
+import com.spring.demo.entities.Demo;
 
 public interface DemoRepository {
 	Demo findDemo(long id);

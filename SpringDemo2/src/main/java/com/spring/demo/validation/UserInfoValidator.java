@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import entities.UserInfo;
+import com.spring.demo.entities.UserInfo;
 
 @Component
 public class UserInfoValidator implements Validator {

@@ -1,5 +1,8 @@
 package com.spring.demo.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -13,10 +16,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.demo.entities.UserInfo;
 import com.spring.demo.service.RegisterRepository;
+import com.spring.demo.utils.FileUtil;
 import com.spring.demo.validation.UserInfoValidator;
-
-import entities.UserInfo;
 
 /**
  * Handles requests for the application home page.
@@ -52,6 +55,15 @@ public class RegisterController {
 			model.addAttribute("user", form);
 		} else {
 			model.addAttribute("user", null);
+		}
+
+		if (null != form.getUserImg()) {
+			try {
+				String fileUrl = FileUtil.createFileResourcePath(this);
+				form.getUserImg().transferTo(new File(fileUrl + form.getUserImg().getOriginalFilename()));
+			} catch (IllegalStateException | IOException e) {
+				logger.error(e.getMessage());
+			}
 		}
 
 		return "redirect:/welcome/" + form.getAccount();

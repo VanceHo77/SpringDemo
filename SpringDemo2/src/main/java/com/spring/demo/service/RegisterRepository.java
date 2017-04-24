@@ -1,6 +1,6 @@
 package com.spring.demo.service;
 
-import entities.UserInfo;
+import com.spring.demo.entities.UserInfo;
 
 public interface RegisterRepository {
 	public String save(UserInfo form);

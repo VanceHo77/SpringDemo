@@ -2,7 +2,7 @@ package com.spring.demo.service;
 
 import org.springframework.stereotype.Service;
 
-import entities.UserInfo;
+import com.spring.demo.entities.UserInfo;
 
 @Service
 @SuppressWarnings("static-access")

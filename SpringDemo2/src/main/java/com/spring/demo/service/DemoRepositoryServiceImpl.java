@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import entities.Demo;
+import com.spring.demo.entities.Demo;
 
 @Service
 public class DemoRepositoryServiceImpl implements DemoRepository {
