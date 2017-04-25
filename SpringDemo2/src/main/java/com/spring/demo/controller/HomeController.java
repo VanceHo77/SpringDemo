@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.demo.entities.UserInfo;
 import com.spring.demo.service.DemoRepositoryServiceImpl;
 
 /**
@@ -39,6 +40,13 @@ public class HomeController {
 		model.addAttribute("demo", repoImpl.findDemo(6));
 		model.addAttribute("demos", repoImpl.findAll());
 
+		return "home";
+	}
+
+	@RequestMapping(value = "/null", method = RequestMethod.GET)
+	public String nullTest(Locale locale, Model model) throws NullPointerException {
+		UserInfo user = null;
+		user.getAccount();
 		return "home";
 	}
 
