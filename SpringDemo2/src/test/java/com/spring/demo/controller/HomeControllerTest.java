@@ -52,5 +52,9 @@ public class HomeControllerTest {
 				MockMvcResultMatchers.model().attribute("demo", Matchers.hasProperty("id", is(demo.getId()))));
 		this.mockMvc.perform(get("/")).andExpect(view().name("home"))
 				.andExpect(MockMvcResultMatchers.model().attribute("demos", Matchers.hasSize(9)));
+
+		// Test exception
+		this.mockMvc.perform(get("/null")).andExpect(view().name("/error"));
+		;
 	}
 }
